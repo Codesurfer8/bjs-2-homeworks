@@ -7,9 +7,7 @@ function solveEquation(a, b, c) {
   let roorOne = (-b + Math.sqrt(discriminant) )/(2*a);
   let rootTwo = (-b - Math.sqrt(discriminant) )/(2*a);
   
-  if (discriminant < 0) {
-    arr = [];
-  } else if (discriminant == 0) {
+   if (discriminant == 0) {
     arr.push(root)
   } else if (discriminant > 0) {
     arr.push(roorOne, rootTwo)
@@ -28,13 +26,13 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   
   let S = amount - contribution;
   let P = percent / 100 / 12;
-  let dateStart = new Date;
-  let numberOfMonth = (date.getFullYear() - dateStart.getFullYear()) * 12;
-  let diferenceOfMonth = numberOfMonth - date.getMonth();
-
-  let n = nY + diferenceOfMonth;
   
-  //  / 1000 / 60 / 60 / 24 / 30;
+  let currentMonth = new Date().getMonth();
+  let currentYear = new Date().getFullYear();
+  let yearDiferent = date.getFullYear() - currentYear;
+  let n = yearDiferent * 12 - currentMonth + date.getMonth();
+  
+  //  / 1000 / 60 / 60 / 24 / 30; 
   
   let monthlyPayment = S * (P + (P / (((1 + P)**n) - 1)));
   let totalAmount = monthlyPayment * n;
@@ -42,5 +40,5 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   
   
 
-  return diferenceOfMonth;
+  return totalAmount.toFixed(2);
 }
