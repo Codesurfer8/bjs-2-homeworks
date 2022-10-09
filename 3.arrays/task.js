@@ -14,4 +14,4 @@ function advancedFilter(arr) {
   return resultArr; 
 }
 
-advancedFilter(-1,6,-9,3);
+advancedFilter([-1,6,-9,3]);
