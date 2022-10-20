@@ -1,0 +1,53 @@
+// Task 1
+function parseCount(value) {
+    if (isNaN(Number.parseInt(value))) {
+        throw new Error("Невалидное значение");
+    } else {
+        return Number.parseInt(value);
+    }
+};
+
+function validateCount(value) {
+    try {
+        return parseCount(value);
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+// Task 2
+
+class Triangle {
+    constructor(side1, side2, side3) {
+        if ((side1 + side2) < side3 || (side1 + side3) < side2 || (side2 + side3) < side1) {
+            throw new Error("Треугольник с такими сторонами не существует");
+        }
+
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
+    }
+
+    getPerimetr() {
+        return this.side1 + this.side2 + this.side3;
+    };
+
+    getArea() {
+        let p = (this.side1 + this.side2 + this.side3) / 2;
+        let s = Math.sqrt(p * (p - this.side1) * (p - this.side2) * (p - this.side3));
+        return s.toFixed(3);
+    };
+};
+
+function getTriangle(side1, side2, side3) {
+    try {
+        return new Triangle(side1, side2, side3);
+    } catch (error) {
+        console.log(error)
+    } finally {
+
+    }
+};
+
+
+
