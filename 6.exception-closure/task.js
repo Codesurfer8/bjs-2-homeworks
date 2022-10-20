@@ -1,9 +1,11 @@
 // Task 1
 function parseCount(value) {
-    if (isNaN(Number.parseInt(value))) {
+    const parseValue = Number.parseInt(value);
+
+    if (isNaN(parseValue)) {
         throw new Error("Невалидное значение");
     } else {
-        return Number.parseInt(value);
+        return parseValue;
     }
 };
 
@@ -11,7 +13,7 @@ function validateCount(value) {
     try {
         return parseCount(value);
     } catch (error) {
-        console.log(error);
+        return error;
     }
 };
 
@@ -33,9 +35,9 @@ class Triangle {
     };
 
     getArea() {
-        let p = (this.side1 + this.side2 + this.side3) / 2;
+        let p = this.getPerimetr() / 2;
         let s = Math.sqrt(p * (p - this.side1) * (p - this.side2) * (p - this.side3));
-        return s.toFixed(3);
+        return Number(s.toFixed(3));
     };
 };
 
