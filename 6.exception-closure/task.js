@@ -46,8 +46,16 @@ function getTriangle(side1, side2, side3) {
         return new Triangle(side1, side2, side3);
     } catch (error) {
         console.log(error)
-    } finally {
+    }
+};
 
+let triangle = {
+    getPerimetr() {
+        console.log("Ошибка! Треугольник не существует");
+    },
+
+    getArea() {
+        console.log("Ошибка! Треугольник не существует");
     }
 };
 
