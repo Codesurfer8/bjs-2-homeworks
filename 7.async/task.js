@@ -43,21 +43,57 @@ class AlarmClock {
     };
 
     checkClock(alarm) {
-        if(alarm.time === this.getCurrentFormattedTime()) {
+        if (alarm.time === this.getCurrentFormattedTime()) {
             alarm.callback();
         }
     };
 
     start() {
-        if(this.timerId === undefined) {
+        if (this.timerId === undefined) {
             this.timerId = setInterval(() => {
                 this.alarmCollection.map(this.checkClock, this)
             }, 100);
         }
     };
 
-    stop() {
-        
+    clearInterval() {
+        this.timerId = undefined;
+        this.alarmCollection.id = undefined;
     };
+
+    stop() {
+        if (this.timerId !== undefined) {
+            this.clearInterval();
+        }
+    };
+
+    printAlarms() {
+        this.alarmCollection.forEach(function (item) {
+            console.log(`Id: ${item.id} time - ${item.time}`);
+        })
+    };
+
+    clearAlarms() {
+        clearInterval(this.id);
+        this.alarmCollection.splice(0);
+    };
+
 };
- 
+
+// test of task
+
+
+let call = new AlarmClock();
+call.addClock("20:00", setInterval(() => console.log("Пора вставать"), 1000), 1);
+call.addClock("20:01", () => {
+    console.log("Давай, вставай уже");
+    alarmPhone.removeClock(2)
+}, 2);
+
+call.addClock("20:02", () => {
+    console.log("Просыпайся !");
+    call.stop();
+    call.clearAlarms();
+});
+
+call.printAlarms();
