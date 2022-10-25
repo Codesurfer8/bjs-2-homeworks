@@ -30,12 +30,12 @@ class Triangle {
         this.side3 = side3;
     }
 
-    getPerimetr() {
+    getPerimeter() {
         return this.side1 + this.side2 + this.side3;
     };
 
     getArea() {
-        let p = this.getPerimetr() / 2;
+        let p = this.getPerimeter() / 2;
         let s = Math.sqrt(p * (p - this.side1) * (p - this.side2) * (p - this.side3));
         return Number(s.toFixed(3));
     };
@@ -45,19 +45,19 @@ function getTriangle(side1, side2, side3) {
     try {
         return new Triangle(side1, side2, side3);
     } catch (error) {
-        console.log(error)
+        return Triangle = {
+            getPerimeter() {
+                console.log("Ошибка! Треугольник не существует");
+            },
+
+            getArea() {
+                console.log("Ошибка! Треугольник не существует");
+            }
+        };
     }
 };
 
-let triangle = {
-    getPerimetr() {
-        console.log("Ошибка! Треугольник не существует");
-    },
 
-    getArea() {
-        console.log("Ошибка! Треугольник не существует");
-    }
-};
 
 
 
