@@ -45,13 +45,13 @@ function getTriangle(side1, side2, side3) {
     try {
         return new Triangle(side1, side2, side3);
     } catch (error) {
-        return Triangle = {
+        return {
             getPerimeter() {
-                console.log("Ошибка! Треугольник не существует");
+                return "Ошибка! Треугольник не существует";
             },
 
             getArea() {
-                console.log("Ошибка! Треугольник не существует");
+                return "Ошибка! Треугольник не существует";
             }
         };
     }
